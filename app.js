@@ -14,6 +14,7 @@ let body=document.querySelector("body");
 let started=false;
 let level=0;
 let h2=document.querySelector("h2");
+let rstrt=document.querySelector(".restart");
 let clk=document.querySelector(".start");
 
 clk.addEventListener("click",function(){
@@ -73,11 +74,21 @@ if(userSeq[idx]===gaemSeq[idx]){
     },200);
     Score.push(level);
     let hs=Math.max(...Score);
-    h2.innerHTML=`Game Over! your score was<b> ${level}</b>. <br>highest score = ${hs}.<br>Press any key to start. `
-   
+    h2.innerHTML=`Game Over! your score was<b> ${level}</b>. <br>highest score = ${hs}.<br>Press any key or Restart to start . `
+  
     reset();
 }
 }
+
+rstrt.addEventListener("click",function(){
+    if(started==false){
+        console.log("game start");
+        started=true;
+
+        levelUp();
+    }
+   
+});
 
 
 function btnPress(){
@@ -100,3 +111,4 @@ function reset(){
     userSeq=[];
     level=0;
 }
+
